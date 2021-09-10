@@ -1,4 +1,5 @@
 # Write your code here :-)
+#This is Josie's pride and joy
 import board
 import neopixel
 import time
