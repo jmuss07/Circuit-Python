@@ -32,7 +32,7 @@ while True:
             print(angle)
             time.sleep(0.05)
     if not touch_a4.value and not touch_a0.value:
-        print("I'm so lonely")
+        print("I'm no longer moving (help!)")
         time.sleep(.05)
 
     time.sleep(.05)
