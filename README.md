@@ -1,4 +1,3 @@
-# Circuit-Python
 # CircuitPython
 This repository will actually serve as a aid to help you get started with your own template.  You should copy the raw form of this readme into your own, and use this template to write your own.  If you want to draw inspiration from other classmates, feel free to check [this directory of all students!](https://github.com/chssigma/Class_Accounts).
 ## Table of Contents
@@ -17,7 +16,29 @@ Description goes here
 Here's how you make code look like code:
 
 ```python
-Code goes here
+# Write your code here :-)
+#This is Josie's pride and joy
+import board
+import neopixel
+import time
+import random
+
+dot = neopixel.NeoPixel(board.NEOPIXEL, 1)
+
+red = [204, 0, 0]
+orange = [255, 50, 0]
+yellow = [200, 100, 0]
+green = [0, 230, 0]
+blue = [0, 0, 255]
+purple = [146, 0, 199]
+color_list = [red, orange, yellow, green, blue, purple]
+print("Make it disco!!!")
+dot.brightness = 0.1
+while True:
+    random_color = random.choice(color_list)
+    dot.fill((random_color))
+    time.sleep(0.1)
+
 
 ```
 
