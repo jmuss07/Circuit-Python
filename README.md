@@ -41,6 +41,7 @@ while True:
 
 ### Evidence
 Look at it go!! So many random colors...
+
 ![Look at it go!! So many random colors...](https://github.com/jmuss07/Circuit-Python/blob/main/Images/Random_Color.gif?raw=true)
 
 ### Wiring
@@ -55,18 +56,66 @@ This one worked well, and was pretty easy once I figured out the basic Cicuit Py
 ## CircuitPython_Servo
 
 ### Description & Code
+This servo is powered via capacitive touch! (If you touch one wire, it turns one way, and if you touch the other the servo spins the other way!)
 
 ```python
-Code goes here
+# Write your code here :-)
+
+import board
+import time
+import pwmio
+import servo
+import touchio
+
+touch_a4 = touchio.TouchIn(board.A4)
+touch_a0 = touchio.TouchIn(board.A0)
+
+pwm = pwmio.PWMOut(board.A2, duty_cycle=2**15, frequency=200)
+super_snazzy_servo = servo.Servo(pwm)
+
+super_snazzy_servo.angle = 90
+angle = 90
+
+while True:
+    if touch_a4.value:
+        print("Going fowards!")
+        if angle in range(0, 175):
+            angle += 5
+            super_snazzy_servo.angle = angle
+            print(angle)
+        time.sleep(0.05)
+
+    if touch_a0.value:
+        print("Coming back!")
+        if angle in range(5, 180):
+            angle -= 5
+            super_snazzy_servo.angle = angle
+            print(angle)
+            time.sleep(0.05)
+    if not touch_a4.value and not touch_a0.value:
+        print("I'm no longer moving (help!)")
+        time.sleep(.05)
+
+    time.sleep(.05)
+
 
 ```
 
 ### Evidence
+The servo itself working with capacitive touch...
 
+![The servo itself working with capacitive touch...](https://github.com/jmuss07/Circuit-Python/blob/main/Images/Servo_GIF.gif?raw=true)
+
+...And the serial moniter showing its rotations!
+
+![...And the serial moniter showing its rotations!](https://github.com/jmuss07/Circuit-Python/blob/main/Images/Servo_Code_GIF.gif?raw=true)
 ### Wiring
+Simple servo wiring!
+
+![Simple servo wiring!](https://github.com/jmuss07/Circuit-Python/blob/main/Images/servo.png?raw=true)
 
 ### Reflection
-
+This one was a lot more challenging. Although I was able to get the servo code and capacitive touch code to work well independently, actually combining the two parts proved to be diffiucult. After a lot of trouble shooting, I was final;ly able to get it to work well!
 
 
 
