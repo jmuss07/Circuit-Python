@@ -13,8 +13,6 @@ This repository will actually serve as a aid to help you get started with your o
 ### Description & Code
 The code makes the Neopixel on the Metro Express flash a random color from a list of rainbow colors. It's looped so that every 0.1 seconds it chooses a different color from the same list.
 
-Here's how you make code look like code:
-
 ```python
 # Write your code here :-)
 #This is Josie's pride and joy
@@ -47,8 +45,7 @@ while True:
 Pictures / Gifs of your work should go here.  You need to communicate what your thing does.
 
 ### Wiring
-Make an account with your google ID at [tinkercad.com](https://www.tinkercad.com/learn/circuits), and use "TinkerCad Circuits to make a wiring diagram."  It's really easy!  
-Then post an image here.   [here's a quick tutorial for all markdown code, like making links](https://guides.github.com/features/mastering-markdown/)
+No wiring, all you need is and Adafruit Metro Express
 
 ### Reflection
 This one worked well, and was pretty easy once I figured out the basic Cicuit Python commands. I then went
