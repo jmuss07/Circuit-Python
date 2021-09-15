@@ -4,7 +4,6 @@
 * [Hello_CircuitPython](#Hello_CircuitPython)
 * [CircuitPython_Servo](#CircuitPython_Servo)
 * [CircuitPython_LCD](#CircuitPython_LCD)
-* [NextAssignmentGoesHere](#NextAssignment)
 ---
 
 ## Hello_CircuitPython
@@ -89,18 +88,3 @@ Code goes here
 
 
 
-
-## NextAssignment
-
-### Description & Code
-
-```python
-Code goes here
-
-```
-
-### Evidence
-
-### Wiring
-
-### Reflection
