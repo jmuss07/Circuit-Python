@@ -41,14 +41,14 @@ while True:
 
 
 ### Evidence
-!(/images/Random_Color.gif)
-Format: ![Look at it go!! So many random colors...](https://github.com/jmuss07/Circuit-Python/blob/main/Random_Color.gif?raw=true)
+Look at it go!! So many random colors...
+![Look at it go!! So many random colors...](https://github.com/jmuss07/Circuit-Python/blob/main/Random_Color.gif?raw=true)
 
 ### Wiring
 No wiring, all you need is and Adafruit Metro Express
 
 ### Reflection
-This one worked well, and was pretty easy once I figured out the basic Cicuit Python commands. I then went
+This one worked well, and was pretty easy once I figured out the basic Cicuit Python commands. I then went through and decided to switch from just the required LED color change to experimenting with lists in order to achieve the final product. 
 
 
 
