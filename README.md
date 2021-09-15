@@ -41,8 +41,8 @@ while True:
 
 
 ### Evidence
-![GitHub Logo](/images/Random_Color.gif)
-Format: ![Alt Text](url)
+![Evidence](/images/Random_Color.gif)
+Format: ![Look at it go!! So many random colors...](https://github.com/jmuss07/Circuit-Python/blob/main/Random_Color.gif?raw=true)
 
 ### Wiring
 No wiring, all you need is and Adafruit Metro Express
