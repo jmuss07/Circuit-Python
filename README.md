@@ -41,7 +41,7 @@ while True:
 
 ### Evidence
 Look at it go!! So many random colors...
-![Look at it go!! So many random colors...](https://github.com/jmuss07/Circuit-Python/blob/main/Random_Color.gif?raw=true)
+![Look at it go!! So many random colors...](https://github.com/jmuss07/Circuit-Python/blob/main/Images/Random_Color.gif?raw=true)
 
 ### Wiring
 No wiring, all you need is and Adafruit Metro Express
