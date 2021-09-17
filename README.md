@@ -67,36 +67,37 @@ import pwmio
 import servo
 import touchio
 
-touch_a4 = touchio.TouchIn(board.A4)
+touch_a4 = touchio.TouchIn(board.A4) #your basic capacitive touch command!
 touch_a0 = touchio.TouchIn(board.A0)
 
-pwm = pwmio.PWMOut(board.A2, duty_cycle=2**15, frequency=200)
-super_snazzy_servo = servo.Servo(pwm)
+pwm = pwmio.PWMOut(board.A2, duty_cycle=2**15, frequency=200) #sets the servo rotation frequency
+super_snazzy_servo = servo.Servo(pwm) #simplifies servo function by setting it equal to the desired frequency
 
-super_snazzy_servo.angle = 90
-angle = 90
+super_snazzy_servo.angle = 90 #sets your starting servo angle
+angle = 90 #Sets your starting value for angle
 
 while True:
-    if touch_a4.value:
+    if touch_a4.value: #If function for the first capacitive touch value, this one will control fowards motion
         print("Going fowards!")
-        if angle in range(0, 175):
-            angle += 5
-            super_snazzy_servo.angle = angle
-            print(angle)
-        time.sleep(0.05)
+        if angle in range(0, 175): #Making sure that the angle is in a viable range to continue moving
+            angle += 5 #Adds value to the initial angle value (Set on the first line above the while true statement)
+            super_snazzy_servo.angle = angle #Sets servo angle to our new angle value
+            print(angle) #Tells us our new angle value on the serial monitor
+        time.sleep(0.05) #Sets a rest interval before continuing the loop
 
-    if touch_a0.value:
+    if touch_a0.value: #If function for the second capacitive touch value, this one will control backwards motion
         print("Coming back!")
-        if angle in range(5, 180):
-            angle -= 5
-            super_snazzy_servo.angle = angle
-            print(angle)
-            time.sleep(0.05)
-    if not touch_a4.value and not touch_a0.value:
-        print("I'm no longer moving (help!)")
-        time.sleep(.05)
+        if angle in range(5, 180):#Making sure that the angle is in a viable range to continue moving
+            angle -= 5 #Subtracts value from the initial angle value (Set on the first line above the while true statement)
+            super_snazzy_servo.angle = angle #Sets servo angle to our new angle value
+            print(angle) #Tells us our new angle value on the serial monitor
+            time.sleep(0.05)  #Sets a rest interval before continuing the loop
+  
+  if not touch_a4.value and not touch_a0.value: #Checks if no wires are touched so that code doesn't go into a paniced 
+        print("I'm no longer moving (help!)") #Lets us know via the serial monitor that the servo is not moving (that the capcitive touch isn't recieving input)
+        time.sleep(.05)  #Sets a rest interval before continuing the loop
 
-    time.sleep(.05)
+    time.sleep(.05)  #Sets a rest interval before continuing the loop
 
 
 ```
