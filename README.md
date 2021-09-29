@@ -3,7 +3,9 @@
 * [Table of Contents](#TableOfContents)
 * [Hello_CircuitPython](#Hello_CircuitPython)
 * [CircuitPython_Servo](#CircuitPython_Servo)
+* [Ultrasonic Sensor](#Ultrasonic_Sensor)
 * [CircuitPython_LCD](#CircuitPython_LCD)
+
 ---
 
 ## Hello_CircuitPython
@@ -117,6 +119,67 @@ Simple servo wiring!
 
 ### Reflection
 This one was a lot more challenging. Although I was able to get the servo code and capacitive touch code to work well independently, actually combining the two parts proved to be diffiucult. After a lot of trouble shooting, I was final;ly able to get it to work well!
+
+
+## Ultrasonic_Sensor
+
+### Description & Code
+This code powers an HCSR04 ultrasonic sensor. As the distance changes, the built in LED (the neopixel) on a Metro Express gradually shifts in colors in a range from red to green.
+
+```python
+
+# SPDX-FileCopyrightText: 2021 ladyada for Adafruit Industries
+# SPDX-License-Identifier: MIT
+
+import time
+import board
+import neopixel
+import adafruit_hcsr04 #imports ultrasonic sensor
+import simpleio #imports map function library
+
+dot = neopixel.NeoPixel(board.NEOPIXEL, 1)
+
+sonar = adafruit_hcsr04.HCSR04(trigger_pin=board.D8, echo_pin=board.D9) #sets ultrasonic sensor pins
+distance = 0
+dot.brightness = 0.1
+while True:
+    try:
+        distance = sonar.distance #sets the variable "distance" to equal the number the ultrasonic sends back
+        print((distance,)) #prints the numeric value of distance
+    except RuntimeError: #Use if the ultrasonic does not recieve input
+        print("Retrying!") #report error message to the serial monitor
+    time.sleep(0.1)
+
+    if distance >= 5 and distance < 20: #Sets a range for the distance
+        blue = int(simpleio.map_range(distance, 5, 20, 0, 255)) #Maps out the values of blue that the led moves between
+        green = int(simpleio.map_range(distance, 5, 20, 0, 0)) #Maps out the values of green that the led moves between
+        red = int(simpleio.map_range(distance, 5, 20, 255, 0)) #Maps out the values of red that the led moves between
+        dot.fill((red, green, blue)) #Changes the led color to equal the new values for red,green and blue
+
+    if distance >= 20 and distance < 35: #Sets a range for the distance
+        blue = int(simpleio.map_range(distance, 20, 35, 255, 0))  #Maps out the values of blue that the led moves between
+        green = int(simpleio.map_range(distance, 20, 35, 0, 255)) #Maps out the values of green that the led moves between
+        red = int(simpleio.map_range(distance, 20, 35, 0, 0))  #Maps out the values of red that the led moves between
+        dot.fill((red, green, blue)) #Changes the led color to equal the new values for red,green and blue
+```
+
+### Evidence
+It works!
+
+![It works!](https://github.com/inovotn04/CircuitPython/raw/main/Images/DistanceSensorEvidence.gif?raw=true)
+
+Image credit goes to [Ian Novotne](https://github.com/inovotn04/CircuitPython)
+
+### Wiring
+Ultrasonic sensor wiring!
+![Ultrasonic sensor wiring!](https://github.com/Jhouse53/CircuitPython/raw/main/GIF%20and%20Images/UltraSonicSensor%20wiring.PNG?raw=true)
+
+Image credit goes to [Benton House](https://github.com/Jhouse53/CircuitPython)
+### Reflection
+This one was a lot more challenging. It was a struggle to get my ultrasonic sensor code to work on its own, though I eventually figured out that that problem was being caused purely because the sensor I was using was broken. Once I switched it out to a working sensor, the code worked well. The next challenge came with coding the light. While I originally attempted coding the gradually color shifting LED
+using math, that strategy didn't work in the end and proved to be extremely dsifficult. As such, I switched to using a new method known as color mapping. Once I figured out how this worked, the LED worked well.
+
+
 
 
 
