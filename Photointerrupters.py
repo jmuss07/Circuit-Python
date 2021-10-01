@@ -16,8 +16,9 @@ max = 4
 while True:
     photo = interrupter_pin.value
     if photo and not state:
-        print(str(counter))
         counter += 1
+        print(str(counter))
+
     state = photo
 
     new_time = max - time.monotonic()
