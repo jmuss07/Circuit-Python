@@ -4,6 +4,7 @@
 * [Hello_CircuitPython](#Hello_CircuitPython)
 * [CircuitPython_Servo](#CircuitPython_Servo)
 * [Ultrasonic Sensor](#Ultrasonic_Sensor)
+* [CircuitPython Photointerrupter](#CircuitPython_Photointerrupter)
 * [CircuitPython_LCD](#CircuitPython_LCD)
 
 ---
@@ -178,6 +179,25 @@ Image credit goes to [Benton House](https://github.com/Jhouse53/CircuitPython)
 ### Reflection
 This one was a lot more challenging. It was a struggle to get my ultrasonic sensor code to work on its own, though I eventually figured out that that problem was being caused purely because the sensor I was using was broken. Once I switched it out to a working sensor, the code worked well. The next challenge came with coding the light. While I originally attempted coding the gradually color shifting LED
 using math, that strategy didn't work in the end and proved to be extremely dsifficult. As such, I switched to using a new method known as color mapping. Once I figured out how this worked, the LED worked well.
+
+
+
+## CircuitPython_Photointerrupter
+
+### Description & Code
+
+```python
+Code goes here
+
+```
+
+### Evidence
+
+### Wiring
+Photointerrupter wiring!
+![Photointerrupter wiring!](https://github.com/jmuss07/Circuit-Python/blob/main/Images/Photointerrupter.PNG?raw=true)
+
+### Reflection
 
 
 
