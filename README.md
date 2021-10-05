@@ -4,6 +4,7 @@
 * [Hello_CircuitPython](#Hello_CircuitPython)
 * [CircuitPython_Servo](#CircuitPython_Servo)
 * [Ultrasonic Sensor](#Ultrasonic_Sensor)
+* [CircuitPython Photointerrupter](#CircuitPython_Photointerrupter)
 * [CircuitPython_LCD](#CircuitPython_LCD)
 
 ---
@@ -179,6 +180,60 @@ Image credit goes to [Benton House](https://github.com/Jhouse53/CircuitPython)
 This one was a lot more challenging. It was a struggle to get my ultrasonic sensor code to work on its own, though I eventually figured out that that problem was being caused purely because the sensor I was using was broken. Once I switched it out to a working sensor, the code worked well. The next challenge came with coding the light. While I originally attempted coding the gradually color shifting LED
 using math, that strategy didn't work in the end and proved to be extremely dsifficult. As such, I switched to using a new method known as color mapping. Once I figured out how this worked, the LED worked well.
 
+
+
+## CircuitPython_Photointerrupter
+
+### Description & Code
+This code utilises a photointerrupter. The serial moniter prints out the number of times the photointerrupter is interrupted, and it resets back to 0 interrupts every four seconds.
+```python
+import board
+import time
+import digitalio
+
+interrupter_pin = digitalio.DigitalInOut(board.D8)
+interrupter_pin.switch_to_input
+interrupter_pin.pull = digitalio.Pull.UP
+
+initial_time = time.monotonic()
+photo = False
+state = False
+
+counter = 0
+max = 4
+while True:
+    photo = interrupter_pin.value
+    if photo and not state:
+        counter += 1
+        print(str(counter))
+
+    state = photo
+
+    new_time = max - time.monotonic()
+
+    if new_time <= 0:
+        print(str(counter))
+        max = time.monotonic() + 4
+        counter = 0
+```
+
+### Evidence
+
+The photointerrupter itself being triggered...
+
+![The photointerrupter itself being triggered...](https://github.com/jmuss07/Circuit-Python/blob/main/Images/Photointerrupter_GIF.gif?raw=true)
+
+...And the serial moniter showing the number of interruptions!
+
+![...And the serial moniter showing the number of interruptions!](https://github.com/jmuss07/Circuit-Python/blob/main/Images/Photointerrupter_Code_GIF.gif?raw=true)
+
+### Wiring
+Photointerrupter wiring!
+
+![Photointerrupter wiring!](https://github.com/jmuss07/Circuit-Python/blob/main/Images/Photointerrupter.PNG?raw=true)
+
+### Reflection
+I ran into some challenges originally, since I had never worked with a photointerrupters before. This code also utilises time.monotonic instead of time.sleep, which I had never used before. Once I got the photointerrupter to successfully record the number of interrupts, the next challenge came from trying to bget it to not only reset back to 0 interrupts every four seconds, but also to have it print out that number every second. Once I got it to work and did some research on photointerrupters and the time.monotonic function, the code made a lot of sense.
 
 
 
