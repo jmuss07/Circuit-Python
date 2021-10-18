@@ -241,6 +241,7 @@ I ran into some challenges originally, since I had never worked with a photointe
 ## CircuitPython_LCD
 
 ### Description & Code
+Two wires use capacitive touch, with one determining whether it was counting up or down and the other registering and recording/counting the number of touches. The LCD screen displays what number the counter is at.
 
 ```python
 import board
@@ -315,11 +316,16 @@ while True:
 ```
 
 ### Evidence
+It works!
+
+![It works!](https://github.com/jmuss07/Circuit-Python/blob/main/Images/LCD_GIF.gif?raw=true)
 
 ### Wiring
+LCD screen wiring!
 
+![LCD screen wiring!](https://github.com/jmuss07/Circuit-Python/blob/main/Images/LCD.PNG?raw=true)
 ### Reflection
-
+I had some trouble getting the screen to clear quickly enough, and for all the text to fit and still be fast. At first, I did the assignment wrong so that one wire counted up and the other counted fdown. Once I got the hang of booleans, this was fairly easy. However, the assignment was to have one wire control whether it was counting up or down, and then other would change the numbers/register and record each touch. Getting the wire that controled whether it was counting up or down was hard, but I eventually got it to work.
 
 
 
