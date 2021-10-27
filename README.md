@@ -51,7 +51,7 @@ Look at it go!! So many random colors...
 No wiring, all you need is and Adafruit Metro Express
 
 ### Reflection
-This one worked well, and was pretty easy once I figured out the basic Cicuit Python commands. I then went through and decided to switch from just the required LED color change to experimenting with lists in order to achieve the final product. 
+This one worked well, and was pretty easy once I figured out the basic Cicuit Python commands, which are somewhat similar to those used by Arduino, though there all some differences (for instance, you don't need semicolons at the end of each line, and different commands vary; "While True:" statementds are loops). I then went through and decided to switch from just the required LED color change to experimenting with lists in order to achieve the final product. 
 
 
 
@@ -119,7 +119,7 @@ Simple servo wiring!
 ![Simple servo wiring!](https://github.com/jmuss07/Circuit-Python/blob/main/Images/servo.png?raw=true)
 
 ### Reflection
-This one was a lot more challenging. Although I was able to get the servo code and capacitive touch code to work well independently, actually combining the two parts proved to be diffiucult. After a lot of trouble shooting, I was final;ly able to get it to work well!
+This one was a lot more challenging. Although I was able to get the servo code and capacitive touch code to work well independently, actually combining the two parts proved to be diffiucult. After a lot of trouble shooting, I was finally able to get it to work well!
 
 
 ## Ultrasonic_Sensor
