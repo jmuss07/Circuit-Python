@@ -119,8 +119,7 @@ Simple servo wiring!
 ![Simple servo wiring!](https://github.com/jmuss07/Circuit-Python/blob/main/Images/servo.png?raw=true)
 
 ### Reflection
-This one was a lot more challenging. Although I was able to get the servo code and capacitive touch code to work well independently, actually combining the two parts proved to be diffiucult. After a lot of trouble shooting, I was finally able to get it to work well!
-
+This one was a lot more challenging. It turns out that the code for a servo is a lot different in Circuit Python as opposed to Arduino. This was my first time using the "pwmio" funtion. The "pwmio" function controls the servo and uses frequency cycles. When using this function, I found out that I should use a cycle of "2* * 15" and a frequency of 200. I had never coded capcitive touch before, so I started out with a search for what it is. My original code for capacitive touch was controled by plugging the wire in and out, whereas capacitive touch is meant to be controlled by touching different wires with your finger. When I found that out, I did a bit more research and adjusted the code a bit until I could get the capcitive touch code to sork on it's own (Touching one wire printed a message to the serial moniter, and touching the other printed a different message). Although I was able to get the servo code and capacitive touch code to work well independently, actually combining the two parts proved to be diffiucult. After a lot of trouble shooting and more research, I found out that the problem came from my syntax and conflicting "if" statements. In order for the code to work, you need to make sure that you put the "if" statement for servo rotation ***inside*** the corresponding "If" loop for the capacitive touch code. You also need to make a third "If" statement for if no wire is touched, so that the servo only turns if it's triggered by the touch of a wire.
 
 ## Ultrasonic_Sensor
 
