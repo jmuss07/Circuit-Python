@@ -176,8 +176,7 @@ Ultrasonic sensor wiring!
 
 Image credit goes to [Benton House](https://github.com/Jhouse53/CircuitPython)
 ### Reflection
-This one was a lot more challenging. It was a struggle to get my ultrasonic sensor code to work on its own, though I eventually figured out that that problem was being caused purely because the sensor I was using was broken. Once I switched it out to a working sensor, the code worked well. The next challenge came with coding the light. While I originally attempted coding the gradually color shifting LED
-using math, that strategy didn't work in the end and proved to be extremely dsifficult. As such, I switched to using a new method known as color mapping. Once I figured out how this worked, the LED worked well.
+This one was a lot more challenging. It was a struggle to get my ultrasonic sensor code to work on its own, though I eventually figured out that that problem was being caused purely because the sensor I was using was broken. Once I switched it out to a working sensor, the code worked well. The next challenge came with coding the light. While I originally attempted coding the gradually color shifting LED using math, that strategy didn't work in the end and proved to be extremely dsifficult. As such, I switched to using a new method known as color mapping. I had to do some research on it before using it, but I found that color mapping does the math for you. You simply give it two values and a time cycle, and it wsill do the work of shifting the numbers as needed! Once I figured out how this worked, the LED worked well.
 
 
 
@@ -232,7 +231,7 @@ Photointerrupter wiring!
 ![Photointerrupter wiring!](https://github.com/jmuss07/Circuit-Python/blob/main/Images/Photointerrupter.PNG?raw=true)
 
 ### Reflection
-I ran into some challenges originally, since I had never worked with a photointerrupters before. This code also utilises time.monotonic instead of time.sleep, which I had never used before. Once I got the photointerrupter to successfully record the number of interrupts, the next challenge came from trying to bget it to not only reset back to 0 interrupts every four seconds, but also to have it print out that number every second. Once I got it to work and did some research on photointerrupters and the time.monotonic function, the code made a lot of sense.
+I ran into some challenges originally, since I had never worked with a photointerrupters before. You can use the photointerrupter by setting a time frequency and a counter, and I figured out how to operate the "Photo" command through the Arduino website This code also utilises time.monotonic instead of time.sleep, which I had never used before. However, I found that both functions are fairly similar, with only slight differnces in command sentences. A quick Google search showed me the correct phrasing (Which I used in my code above!). Once I got the photointerrupter to successfully record the number of interrupts, the next challenge came from trying to get it to not only reset back to 0 interrupts every four seconds, but also to have it print out that number every second. I figured out that this is where the counter, time.monotonic, and string statements came in handy, and created a new if statement that said that if the internal time recorded by time.monotonic was greater than or equal to 4, both the timer and the counter would reset to zero. Once I got it to work and did some research on photointerrupters and the time.monotonic function, the code made a lot of sense.
 
 
 
@@ -324,7 +323,7 @@ LCD screen wiring!
 
 ![LCD screen wiring!](https://github.com/jmuss07/Circuit-Python/blob/main/Images/LCD.PNG?raw=true)
 ### Reflection
-I had some trouble getting the screen to clear quickly enough, and for all the text to fit and still be fast. At first, I did the assignment wrong so that one wire counted up and the other counted fdown. Once I got the hang of booleans, this was fairly easy. However, the assignment was to have one wire control whether it was counting up or down, and then other would change the numbers/register and record each touch. Getting the wire that controled whether it was counting up or down was hard, but I eventually got it to work.
+I had some trouble getting the screen to clear quickly enough, and for all the text to fit and still be fast. At first, I did the assignment wrong so that one wire counted up and the other counted down. In addition, when I touched and held one wire, it continued to count, registering it as many rapid touches instead of one long one. I had to do some research on what was causing the issue, and I managed to find out that something called "Booleans" (which work similar to true-false statements) would help to fix the issue. I'm still not the most sure about how booleans work, but I have a better understanding of it now that I've finished this assignment. Once I got the hang of booleans, the correct effect was easier to accomplish. However, the assignment was to have one wire control whether it was counting up or down, and then other would change the numbers/register and record each touch. Getting the wire that controled whether it was counting up or down was hard, and I had to employ yet another boolean that determined whether the following numbers were poositive or negative. Another challenge came from faulty wires and a slow clear time on the LCD screen, but I was able to fix the clear time issue with the command "lcd.set_cursor_pos(0, 0) ".
 
 
 
