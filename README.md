@@ -51,7 +51,11 @@ Look at it go!! So many random colors...
 No wiring, all you need is and Adafruit Metro Express
 
 ### Reflection
-This one worked well, and was pretty easy once I figured out the basic Cicuit Python commands, which are somewhat similar to those used by Arduino, though there all some differences (for instance, you don't need semicolons at the end of each line, and different commands vary; "While True:" statementds are loops). I then went through and decided to switch from just the required LED color change to experimenting with lists in order to achieve the final product. 
+* Semi-colons are not needed at the end of every line
+* 'while True:' goes at the beginning of what you want looped
+* You can create lists to have the 'random.choice' function to pull from if you want to create a random sequence
+
+This one worked well, and was pretty easy once I figured out the basic Cicuit Python commands, which are somewhat similar to those used by Arduino, though there all some differences (for instance, you don't need semicolons at the end of each line, and different commands vary; "While True:" statements are loops). I then went through and decided to switch from just the required LED color change to experimenting with lists in order to achieve the final product. 
 
 
 
@@ -119,7 +123,16 @@ Simple servo wiring!
 ![Simple servo wiring!](https://github.com/jmuss07/Circuit-Python/blob/main/Images/servo.png?raw=true)
 
 ### Reflection
-This one was a lot more challenging. It turns out that the code for a servo is a lot different in Circuit Python as opposed to Arduino. This was my first time using the "pwmio" funtion. The "pwmio" function controls the servo and uses frequency cycles. When using this function, I found out that I should use a cycle of "2* * 15" and a frequency of 200. I had never coded capcitive touch before, so I started out with a search for what it is. My original code for capacitive touch was controled by plugging the wire in and out, whereas capacitive touch is meant to be controlled by touching different wires with your finger. When I found that out, I did a bit more research and adjusted the code a bit until I could get the capcitive touch code to sork on it's own (Touching one wire printed a message to the serial moniter, and touching the other printed a different message). Although I was able to get the servo code and capacitive touch code to work well independently, actually combining the two parts proved to be diffiucult. After a lot of trouble shooting and more research, I found out that the problem came from my syntax and conflicting "if" statements. In order for the code to work, you need to make sure that you put the "if" statement for servo rotation ***inside*** the corresponding "If" loop for the capacitive touch code. You also need to make a third "If" statement for if no wire is touched, so that the servo only turns if it's triggered by the touch of a wire.
+* As opposed to the 'servo.read' and 'servo.write' functions used with Arduino, Circuit Python uses the 'pwmio' function
+* 'pwmio' functions use frequency cycles to control the servo
+* A cycle length of '2 * * 15' and a frequency of 200
+* Capacitive touch is controlled by touching different wires with your finger
+* Touching one wire printed a message to the serial moniter while touching the other printed a different message
+* Multiple 'if' statements can cause conflicts in the code
+* The 'if' statement or the servo rotation needs to be ***inside*** the 'if' statement for the capacitive touch code
+* You need one more 'if' statement for if no wires are touched so that the servo only moves if a wire is touched
+
+This one was a lot more challenging. It turns out that the code for a servo is a lot different in Circuit Python as opposed to Arduino. This was my first time using the "pwmio" funtion. The "pwmio" function controls the servo and uses frequency cycles. When using this function, I found out that I should use a cycle of "2* * 15" and a frequency of 200. I had never coded capcitive touch before, so I started out with a search for what it is. My original code for capacitive touch was controled by plugging the wire in and out, whereas capacitive touch is meant to be controlled by touching different wires with your finger. When I found that out, I did a bit more research and adjusted the code a bit until I could get the capcitive touch code to work on it's own (Touching one wire printed a message to the serial moniter, and touching the other printed a different message). Although I was able to get the servo code and capacitive touch code to work well independently, actually combining the two parts proved to be diffiucult. After a lot of trouble shooting and more research, I found out that the problem came from my syntax and conflicting "if" statements. In order for the code to work, you need to make sure that you put the "if" statement for servo rotation ***inside*** the corresponding "If" loop for the capacitive touch code. You also need to make a third "If" statement for if no wire is touched, so that the servo only turns if it's triggered by the touch of a wire.
 
 ## Ultrasonic_Sensor
 
@@ -176,7 +189,12 @@ Ultrasonic sensor wiring!
 
 Image credit goes to [Benton House](https://github.com/Jhouse53/CircuitPython)
 ### Reflection
-This one was a lot more challenging. It was a struggle to get my ultrasonic sensor code to work on its own, though I eventually figured out that that problem was being caused purely because the sensor I was using was broken. Once I switched it out to a working sensor, the code worked well. The next challenge came with coding the light. While I originally attempted coding the gradually color shifting LED using math, that strategy didn't work in the end and proved to be extremely dsifficult. As such, I switched to using a new method known as color mapping. I had to do some research on it before using it, but I found that color mapping does the math for you. You simply give it two values and a time cycle, and it wsill do the work of shifting the numbers as needed! Once I figured out how this worked, the LED worked well.
+* Ultrasonic sensors can break fairly easily, so make sure that it's not broken, otherwise you'll end up facing a lot of frustration when trying to figure out why your code isn't working 
+* Trying to code an LED light that gradually shifts through colors using math is extremely challenging, so I'd recommend using color mapping, which is a method that does the math for you
+* Color mapping is used by providing it with two values and a time cycle, and from there it shifts the numbers as needed
+* If you're confused, [this](https://docs.google.com/spreadsheets/u/1/d/e/2PACX-1vRzoIejkQqugrDoWHBw14qTI0HifXba92WiyQ24whEnzWcCUaCDYu6ifMQKK5O5Ilkxrd7UKIxPLBCW/pubhtml) document is an extremely helpful resource 
+
+This one was a lot more challenging. It was a struggle to get my ultrasonic sensor code to work on its own, though I eventually figured out that that problem was being caused purely because the sensor I was using was broken. Once I switched it out to a working sensor, the code worked well. The next challenge came with coding the light. While I originally attempted coding the gradually color shifting LED using math, that strategy didn't work in the end and proved to be extremely difficult. As such, I switched to using a new method known as color mapping. I had to do some research on it before using it, but I found that color mapping does the math for you. You simply give it two values and a time cycle, and it will do the work of shifting the numbers as needed! Once I figured out how this worked, the LED worked well.
 
 
 
@@ -231,6 +249,15 @@ Photointerrupter wiring!
 ![Photointerrupter wiring!](https://github.com/jmuss07/Circuit-Python/blob/main/Images/Photointerrupter.PNG?raw=true)
 
 ### Reflection
+* The photointerrupter is controlled by setting a time frequency and a counter
+* The counter counts the number of time the signal has been interrupted
+* Photointerrupters are also contrtolled using the 'photo' command, and the Arduino website as some great resources and examples for how to use this command
+* The photointerrupter also uses the 'time.monotonic' function instead of 'time.sleep'
+* Whereas 'time.sleep' adds a pause before running the rest of the code, 'time.monotonic' does not and it also compares the current time to an unknown start time
+* The counter needs to reset back to 0 every four seconds, since we want to measure the number of times the signal is interrupted over the course of four seconds
+* To do this, it's important that you use 'time.monotonic' and string functions
+* A new 'if' atstement is needed that says that if the internal time that 'time.monotonic' records is greater than or equal to four, both the counter and timer will both reset to zero
+
 I ran into some challenges originally, since I had never worked with a photointerrupters before. You can use the photointerrupter by setting a time frequency and a counter, and I figured out how to operate the "Photo" command through the Arduino website This code also utilises time.monotonic instead of time.sleep, which I had never used before. However, I found that both functions are fairly similar, with only slight differnces in command sentences. A quick Google search showed me the correct phrasing (Which I used in my code above!). Once I got the photointerrupter to successfully record the number of interrupts, the next challenge came from trying to get it to not only reset back to 0 interrupts every four seconds, but also to have it print out that number every second. I figured out that this is where the counter, time.monotonic, and string statements came in handy, and created a new if statement that said that if the internal time recorded by time.monotonic was greater than or equal to 4, both the timer and the counter would reset to zero. Once I got it to work and did some research on photointerrupters and the time.monotonic function, the code made a lot of sense.
 
 
@@ -323,7 +350,9 @@ LCD screen wiring!
 
 ![LCD screen wiring!](https://github.com/jmuss07/Circuit-Python/blob/main/Images/LCD.PNG?raw=true)
 ### Reflection
-I had some trouble getting the screen to clear quickly enough, and for all the text to fit and still be fast. At first, I did the assignment wrong so that one wire counted up and the other counted down. In addition, when I touched and held one wire, it continued to count, registering it as many rapid touches instead of one long one. I had to do some research on what was causing the issue, and I managed to find out that something called "Booleans" (which work similar to true-false statements) would help to fix the issue. I'm still not the most sure about how booleans work, but I have a better understanding of it now that I've finished this assignment. Once I got the hang of booleans, the correct effect was easier to accomplish. However, the assignment was to have one wire control whether it was counting up or down, and then other would change the numbers/register and record each touch. Getting the wire that controled whether it was counting up or down was hard, and I had to employ yet another boolean that determined whether the following numbers were poositive or negative. Another challenge came from faulty wires and a slow clear time on the LCD screen, but I was able to fix the clear time issue with the command "lcd.set_cursor_pos(0, 0) ".
+* One wire needs to control the counting itself, while the other controls whether it's counting up or down
+* In order to make sure it counts one long touch only once as opposed to a series of rapid touches, you need to use 'booleans' which work similarly to true-false statements (which is demonstrated in my code above)
+* In addition to the boolean used to regulate the counting, another is needed to control whether it's counting up or down by determining whether the next numbers are positive or negative
+* A slow clear time for the LCD screen can also cause problems, though the clear time can be fixed with the command 'lcd.set_cursor_pos(0, 0)'
 
-
-
+I had some trouble getting the screen to clear quickly enough, and for all the text to fit and still be fast. At first, I did the assignment wrong so that one wire counted up and the other counted down. In addition, when I touched and held one wire, it continued to count, registering it as many rapid touches instead of one long one. I had to do some research on what was causing the issue, and I managed to find out that something called "Booleans" (which work similar to true-false statements) would help to fix the issue. I'm still not the most sure about how booleans work, but I have a better understanding of it now that I've finished this assignment. Once I got the hang of booleans, the correct effect was easier to accomplish. However, the assignment was to have one wire control whether it was counting up or down, and then other would change the numbers/register and record each touch. Getting the wire that controlled whether it was counting up or down was hard, and I had to employ yet another boolean that determined whether the following numbers were positive or negative. Another challenge came from faulty wires and a slow clear time on the LCD screen, but I was able to fix the clear time issue with the command "lcd.set_cursor_pos(0, 0) ".
