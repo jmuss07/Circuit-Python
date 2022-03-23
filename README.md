@@ -6,6 +6,7 @@
 * [Ultrasonic Sensor](#Ultrasonic_Sensor)
 * [CircuitPython Photointerrupter](#CircuitPython_Photointerrupter)
 * [CircuitPython_LCD](#CircuitPython_LCD)
+* [Classes, Objects, and Modules](#Classes_Objects_Modules)
 
 ---
 
@@ -185,6 +186,7 @@ Image credit goes to [Ian Novotne](https://github.com/inovotn04/CircuitPython)
 
 ### Wiring
 Ultrasonic sensor wiring!
+
 ![Ultrasonic sensor wiring!](https://github.com/Jhouse53/CircuitPython/raw/main/GIF%20and%20Images/UltraSonicSensor%20wiring.PNG?raw=true)
 
 Image credit goes to [Benton House](https://github.com/Jhouse53/CircuitPython)
@@ -356,3 +358,8 @@ LCD screen wiring!
 * A slow clear time for the LCD screen can also cause problems, though the clear time can be fixed with the command 'lcd.set_cursor_pos(0, 0)'
 
 I had some trouble getting the screen to clear quickly enough, and for all the text to fit and still be fast. At first, I did the assignment wrong so that one wire counted up and the other counted down. In addition, when I touched and held one wire, it continued to count, registering it as many rapid touches instead of one long one. I had to do some research on what was causing the issue, and I managed to find out that something called "Booleans" (which work similar to true-false statements) would help to fix the issue. I'm still not the most sure about how booleans work, but I have a better understanding of it now that I've finished this assignment. Once I got the hang of booleans, the correct effect was easier to accomplish. However, the assignment was to have one wire control whether it was counting up or down, and then other would change the numbers/register and record each touch. Getting the wire that controlled whether it was counting up or down was hard, and I had to employ yet another boolean that determined whether the following numbers were positive or negative. Another challenge came from faulty wires and a slow clear time on the LCD screen, but I was able to fix the clear time issue with the command "lcd.set_cursor_pos(0, 0) ".
+
+
+
+
+## Classes_Objects_Modules
