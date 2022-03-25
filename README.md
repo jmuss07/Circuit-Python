@@ -366,6 +366,7 @@ I had some trouble getting the screen to clear quickly enough, and for all the t
 
 ### Description & Code
 A code library is created to store the functions that make the LED fade. A second file is opened to run the functions for as many LEDs as you want.
+
 Main LED Code:
 ```python
 import time
@@ -394,6 +395,7 @@ while True:
     greed2.off()
     blue2.fade()
   ```
+  
 LED Library Code:
 ```python
 import time
