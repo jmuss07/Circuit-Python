@@ -363,3 +363,70 @@ I had some trouble getting the screen to clear quickly enough, and for all the t
 
 
 ## Classes_Objects_Modules
+
+### Description & Code
+A code library is created to store the functions that make the LED fade. A second file is opened to run the functions for as many LEDs as you want.
+Main LED Code:
+```python
+import time
+import board
+from rgb import LED
+
+redPin = board.D7
+bluePin = board.D5
+greedPin = board.D6
+redPin2 = board.D4
+greedPin2 = board.D3
+bluePin2 = board.D8
+
+red = LED(redPin)
+blue = LED(bluePin)
+greed = LED(greedPin)
+red2 = LED(redPin2)
+greed2 = LED(greedPin2)
+blue2 = LED(bluePin2)
+
+while True:
+    red.on(35000)
+    greed.fade()
+    blue.off()
+    red2.on(15000)
+    greed2.off()
+    blue2.fade()
+  ```
+LED Library Code:
+```python
+import time
+import board
+import pwmio
+
+
+class LED:
+    def __init__(self, Pin):
+        self.LED = pwmio.PWMOut(Pin, frequency=5000, duty_cycle=0)
+
+    def fade(self):
+        for i in range(100):
+            if i < 50:
+                self.LED.duty_cycle = int(i * 2 * 65535 / 100)  # Up
+            else:
+                self.LED.duty_cycle = 65535 - int((i - 50) * 2 * 65535 / 100)  # Down
+            print(self.LED.duty_cycle)
+            time.sleep(0.03)
+
+    def on(self, brightness=65535):
+        self.LED.duty_cycle = 65535 - brightness
+
+    def off(self):
+        self.LED.duty_cycle = 65535
+```
+
+### Evidence
+It works! Look at those colors fade!
+
+![It works! Look at those colors fade!](https://github.com/jmuss07/Circuit-Python/blob/main/Images/RGB_gif.gif?raw=true)
+### Wiring
+RGB wiring!
+
+![RGB screen wiring!](https://github.com/jmuss07/Circuit-Python/blob/main/Images/rgb%20wiring.PNG?raw=true)
+### Reflection 
